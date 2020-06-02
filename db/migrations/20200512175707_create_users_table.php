@@ -40,6 +40,5 @@ class CreateUsersTable extends AbstractMigration
             ->addTimestamps()
             ->addIndex('email', ['unique'=>true])
             ->create();
-
     }
 }

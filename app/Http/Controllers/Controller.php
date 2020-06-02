@@ -40,10 +40,5 @@ abstract class Controller
     protected function view(string $view, array $data = [], int $statusCode = Response::HTTP_OK, array $headers = [])
     {
         return new View($view, $data);
-//        $headers['Content-Type'] = 'text/html';
-//
-//        $view = new View($view);
-//
-//        return $this->response($view->getContent($data), $statusCode, $headers);
     }
 }

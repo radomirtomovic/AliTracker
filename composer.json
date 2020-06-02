@@ -16,7 +16,8 @@
     "php-di/php-di": "^6.1",
     "twig/twig": "^3.0",
     "vlucas/phpdotenv": "^4.1",
-    "rakit/validation": "^1.2"
+    "rakit/validation": "^1.2",
+    "illuminate/database": "^7.14"
   },
   "require-dev": {
     "robmorgan/phinx": "^0.12.1",

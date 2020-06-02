@@ -20,6 +20,6 @@ class Handler
 //        if($e instanceof MethodNotAllowedException) {
 //
 //        }
-        return new Response($e->getMessage(), $e->getCode() === 0 ? 500 : $e->getCode());
+        return new Response($e->getMessage(), 500);
     }
 }

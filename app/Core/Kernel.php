@@ -4,6 +4,7 @@
 namespace App\Core;
 
 
+use App\Core\Config\Config;
 use App\Core\Routing\Dispatcher;
 use App\Core\Error\Handler;
 use App\Core\Routing\ResponseHandler;
@@ -15,6 +16,8 @@ use ReflectionMethod;
 use RuntimeException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Database\Capsule\Manager as Capsule;
+
 use Throwable;
 
 class Kernel
@@ -51,6 +54,13 @@ class Kernel
 
         $this->container = $builder->build();
 
+
+        $capsule = new Capsule;
+        $config = $this->container->get(Config::class);
+        $connection = $config->get('database.connections.' . $config->get('database.default'));
+        $capsule->addConnection($connection);
+        $capsule->setAsGlobal();
+        $capsule->bootEloquent();
         return $this->container;
     }
 
@@ -61,10 +71,6 @@ class Kernel
         $dispatcher = new Dispatcher($this->combineRoutes());
 
         try {
-//            $route = [
-//                'controller' => '',
-//                'action' => ''
-//            ];
             ['_route' => $route, 'parameters' => $parameters] = $dispatcher->match($request->getMethod(), $request->getPathInfo());
 
 

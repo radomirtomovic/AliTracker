@@ -26,7 +26,7 @@ class HomeController extends Controller
         $this->config = $config;
     }
 
-    public function hello()
+    public function show()
     {
          return $this->view('index.twig', ['key' => $this->config->get('app.key')]);
     }
