@@ -17,6 +17,8 @@ class UniqueRule extends Rule
 
     protected $fillableParams = ['table', 'column'];
 
+    protected $message = ":attribute already exists";
+
     public function __construct(DatabaseManager $databaseManager)
     {
         $this->databaseManager = $databaseManager;

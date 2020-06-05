@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 
 use App\Core\View\View;
+use App\Exceptions\ValidationException;
+use Rakit\Validation\Validation;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -46,6 +48,12 @@ abstract class Controller
     protected function view(string $view, array $data = [], int $statusCode = Response::HTTP_OK, array $headers = [])
     {
         return new View($view, $data);
+    }
+
+    protected function validate(Validation $validation) {
+        if($validation->fails()) {
+            throw new ValidationException($validation->errors->firstOfAll(), 'Please check your input');
+        }
     }
 
     protected function unprocessableEntity($data = '')

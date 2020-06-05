@@ -45,19 +45,19 @@ class RegisterController extends Controller
         ];
 
 
-        $validation = $this->validator->validate($data, [
+        $this->validate($this->validator->validate($data, [
             'name' => 'required|min:1|max:70',
             'surname' => 'required|min:1|max:70',
             'email' => 'required|email|max:150|unique:users,email',
             'password' => 'required|min:8',
-        ]);
+        ]));
 
-        if ($validation->fails()) {
-            return $this->unprocessableEntity($validation->errors()->firstOfAll());
+        try {
+            $user = $this->registerService->store($data);
+            return $this->created(['user' => $user]);
+        }catch (\Throwable $e) {
+            dd($e->getCode());
         }
 
-        $user = $this->registerService->store($data);
-
-        return $this->created(['user' => $user]);
     }
 }

@@ -45,14 +45,11 @@ class LogInController extends Controller
             'password' => $this->request->request->get('password')
         ];
 
-        $validation = $this->validator->validate($data, [
+        $this->validate($this->validator->validate($data, [
             'email' => 'required|email|max:150',
             'password' => 'required'
-        ]);
+        ]));
 
-        if ($validation->fails()) {
-            return $this->unprocessableEntity($validation->errors()->firstOfAll());
-        }
 
         try {
             $user = $this->logInService->login($data);

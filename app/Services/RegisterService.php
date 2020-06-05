@@ -29,6 +29,7 @@ class RegisterService
             'password' => $this->passwordHash->hash($data['password']),
             'email_verified_at' => Carbon::now(),
         ]);
+        
         $user->saveOrFail();
 
         return $user;
