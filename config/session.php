@@ -1,12 +1,12 @@
 <?php
 
 return [
-    'name' => '',
+    'name' => 'ali_tracker_session',
     'handler' => 'files',
     'secure' => false,
     'httponly' => true,
     'samesite' => 'lax',
-    'domain' => '',
+    'domain' => '.alitracher.test',
     'length' => 64,
-    'bits_per_char' => 8,
+    'bits_per_char' => 6,
 ];

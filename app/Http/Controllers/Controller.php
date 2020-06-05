@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 
 use App\Core\View\View;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 abstract class Controller
@@ -40,5 +41,13 @@ abstract class Controller
     protected function view(string $view, array $data = [], int $statusCode = Response::HTTP_OK, array $headers = [])
     {
         return new View($view, $data);
+    }
+
+    public function unprocessableEntity($data = '') {
+        return $this->response($data, Response::HTTP_UNPROCESSABLE_ENTITY);
+    }
+
+    public function redirect(string $url) {
+        return new RedirectResponse($url);
     }
 }

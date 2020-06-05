@@ -1,8 +1,7 @@
 <?php
-ini_set('display_errors', true);
-session_start();
 
 use App\Core\Kernel;
+use App\Initializer;
 
 require_once __DIR__ . '/../helper.php';
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -11,7 +10,11 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
-$response = (new Kernel(__DIR__ . '/../dependencies'))
-    ->handle();
+(new Kernel(__DIR__ . '/../dependencies', Initializer::class))
+    ->handle()
+    ->send();
 
-$response->send();
+
+
+
+

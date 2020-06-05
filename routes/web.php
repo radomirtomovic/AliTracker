@@ -10,7 +10,9 @@ return [
         '/blog' => ['controller' => HomeController::class, 'action' => 'show'],
         '/register' => ['controller' => RegisterController::class, 'action' => 'show']
     ],
-    'post' => [],
+    'post' => [
+        '/register' => ['controller' => RegisterController::class, 'action' => 'register']
+    ],
     'put' => [],
     'delete' => [],
 ];
