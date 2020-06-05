@@ -29,7 +29,7 @@ class RegisterController extends Controller
         $this->validator = $validator;
     }
 
-    function show()
+    public function show()
     {
         return $this->view('register.twig');
     }

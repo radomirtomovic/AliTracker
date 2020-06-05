@@ -12,11 +12,11 @@ abstract class Controller
 {
     protected function response($data = '', int $statusCode = Response::HTTP_OK, array $headers = [])
     {
-        if(!isset($headers['Content-Type'])) {
+        if (!isset($headers['Content-Type'])) {
             $headers['Content-Type'] = 'application/json';
         }
 
-        if(strtolower($headers['Content-Type']) === 'application/json') {
+        if (strtolower($headers['Content-Type']) === 'application/json') {
             $data = json_encode($data, JSON_THROW_ON_ERROR, 512);
         }
         return new Response($data, $statusCode, $headers);
@@ -33,6 +33,11 @@ abstract class Controller
         return $this->response($data, Response::HTTP_OK, $headers);
     }
 
+    protected function unauthorized($data = '', array $headers = [])
+    {
+        return $this->response($data, Response::HTTP_UNAUTHORIZED, $headers);
+    }
+
     protected function noContent(array $headers)
     {
         return $this->response('', Response::HTTP_NO_CONTENT, $headers);
@@ -43,11 +48,22 @@ abstract class Controller
         return new View($view, $data);
     }
 
-    public function unprocessableEntity($data = '') {
+    protected function unprocessableEntity($data = '')
+    {
         return $this->response($data, Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
-    public function redirect(string $url) {
+    protected function serverError($data = '')
+    {
+        return $this->response($data, Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
+    protected function badRequest($data = '')
+    {
+        return $this->response($data, Response::HTTP_BAD_REQUEST);
+    }
+
+    protected function redirect(string $url)
+    {
         return new RedirectResponse($url);
     }
 }
