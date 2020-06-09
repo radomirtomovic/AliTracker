@@ -23,7 +23,7 @@ const Register = () => {
 
     const handleRegisterSubmit = (values, {setSubmitting}) => {
         axios.post('/register', values).then((response) => {
-
+            location.href = '/login';
         }).catch((err) => {
             setError(err.response);
         }).finally(() => {
