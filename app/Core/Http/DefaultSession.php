@@ -66,4 +66,11 @@ class DefaultSession implements SessionStarter, Session
     {
         $this->set($name, $value);
     }
+
+    public function remove(string $key)
+    {
+        if (isset($_SESSION[$key])) {
+             unset($_SESSION[$key]);
+        }
+    }
 }

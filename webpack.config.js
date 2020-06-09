@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 module.exports = {
     entry: {
-        app: path.resolve(__dirname, "resources/ts/app.ts"),
+        app: path.resolve(__dirname, "resources/ts/app.tsx"),
     },
 
     output: {
@@ -22,7 +22,7 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: [".ts", ".json", ".js"]
+        extensions: [".ts", ".json", ".js", ".jsx", ".tsx"]
     },
     module: {
         rules: [

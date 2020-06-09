@@ -8,16 +8,17 @@
     },
     "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
+    "noUnusedParameters": false,
+    "noImplicitReturns": false,
     "esModuleInterop": true,
-    "noUnusedLocals": true,
-    "noImplicitAny": true,
-    "declaration": true,
+    "noUnusedLocals": false,
+    "noImplicitAny": false,
+    "declaration": false,
     "target": "es2015",
     "module": "es2015",
     "moduleResolution": "node",
-    "strict": true
+    "strict": false,
+    "jsx": "react"
   },
   "include": [
     "resources/ts/**/*"

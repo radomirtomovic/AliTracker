@@ -6,7 +6,7 @@ return [
     'secure' => false,
     'httponly' => true,
     'samesite' => 'lax',
-    'domain' => '.alitracher.test',
+    'domain' => '.alitracker.test',
     'length' => 64,
     'bits_per_char' => 6,
 ];
