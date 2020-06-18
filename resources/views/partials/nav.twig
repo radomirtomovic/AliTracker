@@ -4,6 +4,9 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             {% if (isLoggedIn) %}
                 <li>
+                    {{ user.name }} {{ user.surname }}
+                </li>
+                <li>
                     <form method="post" id="logout-form" action="/logout">
                         <a type="submit" onclick="document.getElementById('logout-form').submit()">Logout</a>
                     </form>
