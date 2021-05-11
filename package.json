@@ -60,7 +60,7 @@
     "@material-ui/lab": "^4.0.0-alpha.55",
     "axios": "^0.18.1",
     "formik": "^2.1.4",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "materialize-css": "^1.0.0",
     "object-assign": "^4.1.1",
     "prop-types": "^15.7.2",
